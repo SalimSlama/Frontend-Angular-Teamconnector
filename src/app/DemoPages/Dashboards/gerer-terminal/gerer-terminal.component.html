@@ -1,0 +1,135 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="vsm-icon pe-7s-phone"></i>
+            </div>
+            <div>
+                <h2>Nom <b>Terminal</b></h2>
+            <div class="page-title-subheading">
+                </div>
+            </div>
+        </div>
+        <div style="color: #fff; font-size: 13px; outline: none !important; border-radius: 2px; border: none; min-width: 50px; outline: none !important;" class="page-title-actions">
+            <a  (click)="triggerModal(modalData)" class="btn btn-danger" data-toggle="modal">
+                <i  class="material-icons" style="float: left; font-size: 21px; margin-right: 5px;">&#xE15C;</i>
+                <span>Effacer Etat</span></a>
+
+        </div>
+        <div id="deleteEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Delete Employee</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">					
+                            <p>Are you sure you want to delete these Records?</p>
+                            <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Angular Bootstrap Modal Popup</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Êtes-vous sûr de vouloir supprimer <span class="text-primary">ces enregistrements ?</span></strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.close('Save click')">Close</button>
+    <input type="submit" class="btn btn-danger" value="Delete">
+  </div>
+</ng-template>
+<div>
+    <label> Choisir un terminal:  </label>
+    <ng-select [items]="cities12" bindLabel="name" placeholder="Select city" >
+    </ng-select>
+</div>
+<div class="main-card mb-3 card">
+    <div class="card-header">
+        Etats du terminal
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th class="text-center">Nom de l'Appareil</th>
+                    <th class="text-center">Version Système</th>
+                    <th class="text-center">Etat de batterie</th>
+                    <th class="text-center">Etat de mémoire</th>
+                    <th class="text-center">Modèle</th>
+                    <th class="text-center">Android_Id</th>
+                    <th class="text-center">Date et Heure</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr *ngFor="let terminaux of terminaux">
+
+                   
+                    <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
+                            <label for="checkbox5"></label>
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left mr-3">
+
+                                </div>
+                                <div class="widget-content-left flex2">
+                                    <div class="widget-heading"> {{terminaux.Modele}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center"> {{terminaux.VersionSE}}</td>
+                    <td class="text-center" style="width: 100px;">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-outer">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left pr-2">
+                                        <div class="widget-numbers fsize-1 text-warning">{{terminaux.NiveauDeBatterie}}</div>
+                                    </div>
+                                    <div class="widget-content-right w-100">
+                                        <div class="progress-bar-xs progress">
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="50"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">{{terminaux.Memoire}}</td>
+                    <td class="text-center">{{terminaux.Fabriquant}}</td>
+                    <td class="text-center">{{terminaux.Android_id}}</td>
+                    <td class="text-center">
+                        {{terminaux.created_at}}                    
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+</div>

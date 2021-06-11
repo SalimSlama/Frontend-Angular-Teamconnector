@@ -1,0 +1,23 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="vsm-icon pe-7s-phone"></i>
+            </div>
+            <div>
+                <h2>Localisation <b>Terminaux</b></h2>
+            <div class="page-title-subheading">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div >
+    <agm-map [latitude]="lat" [longitude]="lng">
+        <div *ngFor="let lastTerminau of lastTerminaux">
+        <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
+        <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
+     </div> </agm-map>
+</div>
+
+

@@ -1,0 +1,72 @@
+<div [class]="'app-sidebar sidebar-shadow ' + (config$ | async).sidebarTheme" (mouseover)="sidebarHoverMouseIn()"
+  (mouseout)="sidebarHoverMouseOut()">
+  <div class="app-header__logo">
+    <div class="logo-src"></div>
+    <div class="header__pane ml-auto">
+      <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+        [ngClass]="{'is-active' : globals.toggleSidebar}" (click)="toggleSidebar();">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="app-sidebar-content">
+    <div class="app-sidebar-scroll">
+      <perfect-scrollbar [autoPropagation]="true" class="scroll-container" [config]="config" [scrollIndicators]="true"
+        style="max-width: 600px; max-height: 600px;">
+        <div class="v-sidebar-menu vsm-default">
+          <div class="vsm-list">
+            <ngb-accordion [destroyOnHide]="false" [closeOthers]="true" #acc="ngbAccordion"
+              activeIds="{{extraParameter}}">
+              <ngb-panel id="dashboards">
+                <ng-template ngbPanelHeader>
+                    <i class="vsm-icon pe-7s-phone"></i>
+                    <span class="vsm-title">Home</span>
+                    <i class="vsm-arrow"></i>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                  <div class="vsm-dropdown">
+                    <div class="vsm-list">
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/dashboard" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Dashboard</span>
+                        </a>
+                      </div>
+                     <!--  <div class="vsm-item">
+                        <a routerLink="/dashboards/gestion-applications" routerLinkActive="active-item" [routerLinkActiveOptions]="{exact: true}" class="vsm-link">
+                          <span class="vsm-title">Gestion applications</span>
+                        </a>
+                      </div> -->
+                      <div class="vsm-item">
+                        <a [routerLink]="['/dashboards/gestion-terminaux']" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Gestion terminaux</span>
+                        </a>
+                      </div>
+                     
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/gerer-terminal" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Gérer Terminal</span>
+                        </a>
+                      </div>
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/gestion-localisation" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Localisations</span>
+                        </a>
+                      </div>
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/gestion-groupes" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Départements</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+  </div>
+</div>

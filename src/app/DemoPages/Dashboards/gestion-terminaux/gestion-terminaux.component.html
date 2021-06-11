@@ -1,0 +1,184 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <!-- <i class="vsm-icon pe-7s-phone"></i> -->
+                <i class="icon {{icon}}"></i>
+            </div>
+            <!-- <i class="vsm-icon pe-7s-phone"></i> -->
+            <div>
+                <h2>Gestion <b>Terminaux</b></h2>
+                <div class="page-title-subheading">
+                  ------------------
+                </div>
+            </div>
+        </div>
+        <div class="page-title-actions">
+            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
+                <span>Delete</span></a>
+            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+                <span>Ajouter un terminal</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+      <div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-primary border-primary card">
+        <div class="widget-chat-wrapper-outer">
+          <div class="widget-chart-content">
+            <div class="widget-title opacity-5 text-uppercase">Les appareils inscrits</div>
+            <div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
+              <div class="widget-chart-flex align-items-center">
+                <div>
+                  <span class="opacity-10 text-success pr-2">
+                  </span>
+                  234
+                </div>
+                <div class="widget-title ml-auto font-size-lg font-weight-normal text-muted">
+                  <div class="circle-progress">
+                    <div class="progress-circle-wrapper">
+                      <div class="round-progress-text">
+                        <span>--</span>
+                        <round-progress [current]="100" [max]="100" [color]="'#52c44f'" [background]="'#f0f0f0'"
+                          [radius]="62" [stroke]="6" [semicircle]="false" [rounded]="true" [clockwise]="false"
+                          [responsive]="true" [duration]="1400" [animation]="'easeInOutQuart'" [animationDelay]="0">
+                        </round-progress>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6">
+      <div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-danger border-danger card">
+        <div class="widget-chat-wrapper-outer">
+          <div class="widget-chart-content">
+            <div class="widget-title opacity-5 text-uppercase">Les appareils connectés</div>
+            <div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
+              <div class="widget-chart-flex align-items-center">
+                <div>
+                  <span class="opacity-10 text-danger pr-2">
+                  </span>
+                  71
+                </div>
+                <div class="widget-title ml-auto font-size-lg font-weight-normal text-muted">
+                  <div class="progress-circle-wrapper">
+                    <div class="round-progress-text">
+                      <span>31%</span>
+                      <round-progress [current]="31" [max]="100" [color]="'#cc603c'" [background]="'#f0f0f0'"
+                        [radius]="62" [stroke]="6" [semicircle]="false" [rounded]="true" [clockwise]="false"
+                        [responsive]="true" [duration]="1400" [animation]="'easeInOutQuart'" [animationDelay]="0">
+                      </round-progress>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="form-group">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="card mb-3 widget-chart">
+        <div class="widget-chart-content">
+          <div class="icon-wrapper rounded">
+            <div class="icon-wrapper-bg bg-warning"></div>
+            <i class="lnr-laptop-phone text-warning"></i>
+          </div>
+          <div class="widget-numbers">
+            <span>Terminal1</span>
+          </div>
+          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Mohamed Salim</div>
+          <div class="widget-description opacity-8">Niveau Batterie:
+
+            <span class="text-success pr-1">
+              <span class="pl-1">86%</span>
+            </span>
+          </div>
+          <br>
+          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
+            Supprimer 
+        </button>
+        </div>
+        <div class="widget-chart-wrapper">
+          <div class="d-block">
+            <canvas baseChart class="chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="card mb-3 widget-chart">
+        <div class="widget-chart-content">
+          <div class="icon-wrapper rounded">
+            <div class="icon-wrapper-bg bg-warning"></div>
+            <i class="lnr-laptop-phone text-warning"></i>
+          </div>
+          <div class="widget-numbers">
+            <span>Terminal2</span>
+          </div>
+          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Sabri Ghezal</div>
+          <div class="widget-description opacity-8">Niveau Batterie:
+
+            <span class="text-warning pr-1">
+              <span class="pl-1">42%</span>
+            </span>
+          </div>
+          <br>
+          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
+            Supprimer 
+        </button>
+        </div>
+        <div class="widget-chart-wrapper">
+          <div class="d-block">
+            <canvas baseChart class="chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="card mb-3 widget-chart">
+        <div class="widget-chart-content">
+          <div class="icon-wrapper rounded">
+            <div class="icon-wrapper-bg bg-warning"></div>
+            <i class="lnr-laptop-phone text-warning"></i>
+          </div>
+          <div class="widget-numbers">
+            <span>Terminal3</span>
+          </div>
+          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Ibrahim Lachaal</div>
+          <div class="widget-description opacity-8">Niveau Batterie:
+
+            <span class="text-danger pr-1">
+              <span class="pl-1">15%</span>
+            </span>
+          </div>
+          <br>
+          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
+            Supprimer 
+        </button>
+        </div>
+        <div class="widget-chart-wrapper">
+          <div class="d-block">
+            <canvas baseChart class="chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+
+
+
+

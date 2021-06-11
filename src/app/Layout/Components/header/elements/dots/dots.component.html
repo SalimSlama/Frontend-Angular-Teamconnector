@@ -1,0 +1,46 @@
+<div class="header-dots">
+
+  <div class="btn-group" ngbDropdown autoClose="outside" placement="bottom">
+    <button type="button" class="btn btn-link p-0 mr-2" ngbDropdownToggle>
+      <span>
+        <div class="icon-wrapper icon-wrapper-alt rounded-circle">
+          <div class="icon-wrapper-bg bg-danger"></div>
+          <i class="lnr-bullhorn text-danger"></i>
+          <div class="badge badge-dot badge-dot-sm badge-danger">Notifications</div>
+        </div>
+      </span>
+    </button>
+    <div class="dropdown-menu-xl" ngbDropdownMenu>
+      <div class="dropdown-menu-header mb-0">
+        <div class="dropdown-menu-header-inner bg-deep-blue">
+          <div class="menu-header-image opacity-1 dd-header-bg-2"></div>
+          <div class="menu-header-content text-dark">
+            <h5 class="menu-header-title">Notifications</h5>
+          </div>
+        </div>
+      </div>
+      <div class="nav-justified">
+        <div class="card-tabbed-header">
+          <ul ngbNav #nav="ngbNav" class="nav-tabs tabs-animated tabs-animated-shadow" justify="justified">
+            <li ngbNavItem>
+              <a ngbNavLink><span>Status</span></a>
+              <ng-template ngbNavContent>
+                <div class="no-results">
+                  <div class="swal2-icon swal2-success swal2-animate-success-icon">
+                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                    <span class="swal2-success-line-tip"></span><span class="swal2-success-line-long"></span>
+                    <div class="swal2-success-ring"></div>
+                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                  </div>
+                  <div class="results-title">Pas de notifications en ce moment !</div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
