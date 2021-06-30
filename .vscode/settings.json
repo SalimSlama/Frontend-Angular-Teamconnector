@@ -1,3 +1,7 @@
 {
-    "js/ts.implicitProjectConfig.experimentalDecorators": true
+  "editor.defaultFormatter": null,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"html.format.enable": false
 }

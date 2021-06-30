@@ -2,10 +2,8 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <!-- <i class="vsm-icon pe-7s-phone"></i> -->
                 <i class="icon {{icon}}"></i>
             </div>
-            <!-- <i class="vsm-icon pe-7s-phone"></i> -->
             <div>
                 <h2>Gestion <b>Terminaux</b></h2>
                 <div class="page-title-subheading">
@@ -14,11 +12,13 @@
             </div>
         </div>
         <div class="page-title-actions">
-            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                <span>Delete</span></a>
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-                <span>Ajouter un terminal</span>
-            </a>
+                <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success"
+                (click)="triggerModal(modalData)">
+                  <br>
+                  <div><i class="material-icons">&#xE147;</i>
+                  </div>
+                  Ajouter un terminal
+                </button>
         </div>
     </div>
 </div>
@@ -106,8 +106,8 @@
             </span>
           </div>
           <br>
-          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
-            Supprimer 
+          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+            Consulter 
         </button>
         </div>
         <div class="widget-chart-wrapper">
@@ -135,8 +135,8 @@
             </span>
           </div>
           <br>
-          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
-            Supprimer 
+          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+            Consulter 
         </button>
         </div>
         <div class="widget-chart-wrapper">
@@ -164,8 +164,8 @@
             </span>
           </div>
           <br>
-          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
-            Supprimer 
+          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+            Consulter 
         </button>
         </div>
         <div class="widget-chart-wrapper">
@@ -175,10 +175,30 @@
         </div>
       </div>
     </div>
-    
-
   </div>
-
+  <ng-template #modalData let-modal >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ajout d'un terminal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+          <h1>QRCODE GENERATOR</h1>
+          <input [(ngModel)]="value">
+          <ngx-qrcode
+             [elementType]="elementType"
+             [errorCorrectionLevel]="correctionLevel"
+             [value]="value"
+             cssClass="coolQRCode"></ngx-qrcode>
+       </div>  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+      <button type="button"  (click)="modal.close('Save click')" class="btn btn-success" >Ajouter</button>
+    </div>
+  </div>
+  </ng-template>
 
 
 

@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12 col-lg-6 col-xl-5">
+      <div class="card main-card mb-3 card-tabbed-header">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs nav-justified tabs-animated tabs-animated-line" justify="justified">
+          <li ngbNavItem>
+            <a ngbNavLink><span>Informations</span></a>
+            <ng-template ngbNavContent>
+                <div>
+                <label>Nom appareil: </label>
+                  <input name="nomappareil" type="text" placeholder="Nom appareil..." class="form-control" disabled>
+                </div>
+                <div>
+                  <label>Adresse Mac: </label>
+                  <input name="adressemac" type="text" placeholder="Adresse Mac..." class="form-control" disabled>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-12"><label class="labels">Etat de mémoire :</label><input type="text" class="form-control" placeholder="Etat de mémoire..." value="" disabled></div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-12"><label class="labels">Version Système :</label><input type="text" class="form-control" placeholder="Version Système..." value="" disabled></div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-12"><label class="labels">Android_Id:</label><input type="text" class="form-control" placeholder="Android_Id..." value="" disabled></div>
+                </div>
+            </ng-template>
+          </li>
+        </ul>
+        <div [ngbNavOutlet]="nav"></div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-6 col-xl-7">
+      <div class="mb-3 card">
+        <div class="card-header-tab card-header">
+          <div class="card-header-title">
+            <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+            Localisation
+          </div>
+          
+
+        </div>
+        <div class="widget-chart p-0">
+          <div class="widget-chart-content">
+          </div>
+        </div>
+        <div class="pt-2 card-body">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <div>
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </div> 
+            </agm-map>
+        </div>
+      </div>
+    </div>
+</div>
+
+

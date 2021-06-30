@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BaseLayoutComponent } from './Layout/base-layout/base-layout.component';
 import { PagesLayoutComponent } from './Layout/pages-layout/pages-layout.component';
+import { Guard } from './services/guard.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: 'userpages',
-        loadChildren: () => import('./DemoPages/UserPages/userpages.module').then(m => m.UserpagesModule),
+        loadChildren: () => import('./DemoPages/UserPages/userpages.module').then(m => m.UserpagesModule)
       },
     ]
   },
@@ -29,7 +30,8 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboards',
-        loadChildren: () => import('./DemoPages/Dashboards/Dashboards.module').then(m => m.DashboardsModule)
+        loadChildren: () => import('./DemoPages/Dashboards/Dashboards.module').then(m => m.DashboardsModule),
+        canActivate: [Guard]
       },
     ]
   },

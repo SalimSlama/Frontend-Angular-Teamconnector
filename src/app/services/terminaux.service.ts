@@ -12,7 +12,7 @@ export class TerminauxService {
     return this.http.get(this.config.baseUrl + "/getallEtatTerminal");
   }
   
-  getLocation(){
+  getlast(){
     return this.http.get(this.config.baseUrl + "/getlast");
 
   }

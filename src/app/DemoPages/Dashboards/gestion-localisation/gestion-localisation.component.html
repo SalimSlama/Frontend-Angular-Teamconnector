@@ -12,12 +12,13 @@
         </div>
     </div>
 </div>
-<div >
+<div>
     <agm-map [latitude]="lat" [longitude]="lng">
         <div *ngFor="let lastTerminau of lastTerminaux">
         <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
         <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
-     </div> </agm-map>
+        </div> 
+    </agm-map>
 </div>
 
 

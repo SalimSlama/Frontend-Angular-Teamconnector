@@ -1,0 +1,79 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="vsm-icon pe-7s-users"></i>
+            </div>
+            <div>
+                <h2>Liste <b>Administrateurs</b></h2>
+            <div class="page-title-subheading">
+                </div>
+            </div>
+            
+        </div>
+        <div class="page-title-actions">
+            <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+              <br>
+              <div><i class="material-icons">&#xE147;</i>
+              </div>
+              Ajouter un administrateur
+            </button>
+    </div>
+    </div>
+</div>
+<div class="main-card mb-3 card">
+    <div class="card-header">
+        Gérer les Administrateurs
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nom & Prénom</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Adresse</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr *ngFor="let administrateurs of administrateurs">
+                    <td class="text-center">{{administrateurs.id}}</td>
+                    <td class="text-center">{{administrateurs.nom}} {{administrateurs.prenom}}</td>
+                    <td class="text-center">{{administrateurs.email}}</td>
+                    <td class="text-center">
+                        <button class="btn btn-info btn-icon" (click)="open(mymodal)">
+                            <i class="icofont-info-square">Info</i>
+                        </button>
+          
+                        <ng-template #mymodal let-modal>
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Adresse d'administrateur</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            {{administrateurs.adresse}}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                          </div>
+                        </ng-template>
+                      </td>
+                    <td class="text-center">
+                        <button class="btn-icon btn-icon-only btn-shadow btn btn-outline-success" (click)="triggerModalupdate(modalupdate,administrateurs.id)">
+                            <i _ngcontent-serverapp-c235="" class="lnr-highlight btn-icon-wrapper"></i>
+                        </button>
+                        <button class="btn-icon btn-icon-only btn-shadow btn btn-outline-danger" (click)="supprimerutilisateur(administrateurs.id)">
+                            <i _ngcontent-serverapp-c235="" class="lnr-trash btn-icon-wrapper"></i>
+                        </button>
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+</div>

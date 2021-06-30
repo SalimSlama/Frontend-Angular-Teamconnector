@@ -1,5 +1,7 @@
+import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { ConfigurationParamComponent } from './configuration-param/configuration-param.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GererTerminalComponent } from './gerer-terminal/gerer-terminal.component';
@@ -9,7 +11,8 @@ import { GestionNotificationsComponent } from './gestion-notifications/gestion-n
 import { GestionTerminauxComponent } from './gestion-terminaux/gestion-terminaux.component';
 import { GestionUtilisateursComponent } from './gestion-utilisateurs/gestion-utilisateurs.component';
 import { GroupesComponent } from './groupes/groupes.component';
-import { RapportsComponent } from './rapports/rapports.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { OneterminalComponent } from './oneterminal/oneterminal.component';
 
 const routes: Routes = [
   {
@@ -42,13 +45,13 @@ const routes: Routes = [
         path: 'gestion-localisation', component: GestionLocalisationComponent, data: { extraParameter: '' }
       },
       {
-        path: 'gestion-notifications', component: GestionNotificationsComponent, data: { extraParameter: '' }
+        path: 'historique', component: HistoriqueComponent, data: { extraParameter: '' }
       },
       {
-        path: 'configuration-param', component: ConfigurationParamComponent, data: { extraParameter: '' }
+        path: 'oneterminal', component: OneterminalComponent, data: { extraParameter: '' }
       },
       {
-        path: 'rapports', component: RapportsComponent, data: { extraParameter: '' }
+        path: 'admin', component: AdministrateurComponent, data: { extraParameter: '' }
       }
     ]
   }

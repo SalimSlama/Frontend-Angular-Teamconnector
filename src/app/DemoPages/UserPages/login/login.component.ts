@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdministrateurService } from 'src/app/services/administrateur.service';
 
 @Component({
   selector: 'app-login',
@@ -22,35 +23,29 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private http: HttpClient,
-              private router: Router) {
+    private http: HttpClient,
+    private router: Router,
+    private adminSRV: AdministrateurService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    this.form = this.fb.group( {
+    this.form = this.fb.group({
       email: '',
       password: ''
     });
   }
-  submit(){   
-    const formData = this.form.getRawValue();
-
-    const data ={
-      username: formData.email,
-      password: formData.password,
-      grant_type: 'client_credentials',
-      client_id: 6,
-      client_secret:'Dh2ovdRq4m2fJ2r27TRFwCrpnBoopn20GZ0SsnFA',
-      scope:'*'
-    };
-
-    this.http.post('http://127.0.0.1:8000/oauth/token', data).subscribe(
-      (result:any)=>{
-        console.log('success');
-        localStorage.setItem('token', result.access_token);
-        this.router.navigate(['/dashboards/gerer-terminal'])  
+  submit() {
+    const formData = this.form.value
+    this.adminSRV.login(formData).subscribe(
+      (result: any) => {
+        console.log(result.token)
+        let returnURL = this.route.snapshot.queryParamMap.get('returnURL')
+        localStorage.setItem('token', result.token);
+        this.router.navigate([returnURL || '/dashboards/'])
       },
-      error =>{
+      error => {
         console.log('error');
         console.log(error);
       }

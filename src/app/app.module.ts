@@ -143,8 +143,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ForgotPasswordBoxedComponent,
     LoginBoxedComponent,
  
-    RegisterBoxedComponent,
-   
+    RegisterBoxedComponent,   
 
     // Tables
 

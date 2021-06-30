@@ -1,15 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CrudService } from 'src/app/services/crud.service';
+import { ModalDismissReasons, NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TerminauxService } from 'src/app/services/terminaux.service';
+const now = new Date();
 
 @Component({
-  selector: 'app-gerer-terminal',
-  templateUrl: './gerer-terminal.component.html',
-  styleUrls: ['./gerer-terminal.component.sass']
+  selector: 'app-historique',
+  templateUrl: './historique.component.html',
+  styleUrls: ['./historique.component.sass']
 })
-export class GererTerminalComponent implements OnInit {
+export class HistoriqueComponent implements OnInit {
   closeModal: string;
   Etats: any;
   selected = 'option2';
@@ -21,13 +20,29 @@ export class GererTerminalComponent implements OnInit {
   ];
   terminaux=[];
   FiltredTerminaux = [];
+  model3: NgbDateStruct;
+  today = this.calendar2.getToday();
+  model: NgbDateStruct;
+  fromDate: NgbDate;
+  toDate: NgbDate;
   constructor(private modalService: NgbModal,
               private terminauxSRV:TerminauxService,
-              ) { }
+              private calendar: NgbCalendar,
+               private calendar2: NgbCalendar){
+    this.fromDate = calendar.getToday();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+      }
+
+  model2: NgbDateStruct = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+  disabled = true;
+
+  selectToday() {
+    this.model = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+  }
   ngOnInit(): void {
-  this.terminauxSRV.getlast().subscribe((data:any)=>{
-    
-    this.FiltredTerminaux=this.terminaux=data
+  this.terminauxSRV.getTerminaux().subscribe((data:any)=>{
+    this.terminaux=data
+    this.FiltredTerminaux=data
   })
   }
   onSelectChange (e) {
@@ -50,6 +65,4 @@ export class GererTerminalComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
- 
 }

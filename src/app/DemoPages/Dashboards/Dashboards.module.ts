@@ -20,6 +20,12 @@ import { TrendModule } from 'ngx-trend';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AgmCoreModule } from '@agm/core';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { HistoriqueComponent } from './historique/historique.component'
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { OneterminalComponent } from './oneterminal/oneterminal.component';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
 
 
 @NgModule({
@@ -36,8 +42,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     TrendModule, 
     NgbModule,
     NgSelectModule,
-
-
+    ReactiveFormsModule,
+    FormsModule,
+    NgxQRCodeModule ,
+    NgApexchartsModule,
     PerfectScrollbarModule,
     RoundProgressModule,
     AgmCoreModule.forRoot({
@@ -57,6 +65,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
        ConfigurationParamComponent,
        RapportsComponent,
        GererTerminalComponent,
+       HistoriqueComponent,
+       OneterminalComponent,
+       AdministrateurComponent,
   ]
 })
 export class DashboardsModule { }

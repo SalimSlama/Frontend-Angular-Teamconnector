@@ -22,14 +22,16 @@
                           <img width="42" src="./assets/images/avatars/111.jpg" alt="" class="rounded-circle">
                         </div>
                         <div class="widget-content-left">
-                          <div class="widget-heading">Mohamed Salim Slama</div>
+                          <div class="widget-heading">{{user?.nom}}</div>
                           <div class="widget-subheading opacity-8">A short profile description</div>
                         </div>
                         <div class="widget-content-right mr-2">
-                          <button class="btn-pill btn-shadow btn-shine btn btn-focus" routerlink="/userpages/login">Logout</button>
+                          <button class="btn-pill btn-shadow btn-shine btn btn-focus" routerlink="/userpages/login"
+                            (click)="logout()">Logout</button>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -58,13 +60,15 @@
               <div class="grid-menu grid-menu-2col overflow-hidden">
                 <div class="no-gutters row">
                   <div class="col-sm-6">
-                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
+                    <button
+                      class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
                       <i class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i>
                       Message Inbox
                     </button>
                   </div>
                   <div class="col-sm-6">
-                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
+                    <button
+                      class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
                       <i class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
                       <b>Suppor Tickets</b>
                     </button>
@@ -81,8 +85,7 @@
           </div>
         </div>
         <div class="widget-content-left ml-3 header-user-info">
-          <div class="widget-heading">Mohamed Salim Slama</div>
-          <div class="widget-subheading">Game Player</div>
+          <div class="widget-heading">{{user?.nom}}</div>
         </div>
       </div>
     </div>

@@ -117,9 +117,8 @@ export class GestionLocalisationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.terminauxSRV.getLocation().subscribe((data:any[])=>{
+    this.terminauxSRV.getlast().subscribe((data:any[])=>{
       this.lastTerminaux=data
-      console.log(data)
       
     })
   }

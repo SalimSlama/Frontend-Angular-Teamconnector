@@ -3,6 +3,7 @@
   <div class="page-title-wrapper">
     <div class="page-title-heading">
       <div class="page-title-icon">
+        <i class="vsm-icon pe-7s-network"></i>
       </div>
       <div>
         <h2>Liste <b>Départements</b></h2>
@@ -11,65 +12,23 @@
 
   </div>
 </div>
+
 <div class="main-card mb-3 card">
   <div class="card-header">
     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-      Liste des utilisateurs
+      Nos départements
     </div>
     <div class="btn-actions-pane-right">
 
-      <!-- <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-danger">
-         
-          <br>
-          <div><i class="material-icons">&#xE15C;</i></div>
-          Supprimer un Utilisateur
-        </button> -->
 
-
-
-      <ng-template #content2 let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Ajouter Groupe</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="card-body">
-
-            <form>
-              <div class="position-relative form-group">
-                <label for="examplegroupe">Nom Groupe</label>
-                <input name="groupe" id="exampleGroupe" placeholder="nom groupe" type="groupe" class="form-control">
-              </div>
-              <div class="position-relative form-group">
-                <label for="examplePassword">Nom Utilisateur</label>
-                <input name="utilisateur" id="exampleUtilisateur" placeholder="nom utilisateur " type="utilisateur"
-                  class="form-control">
-              </div>
-              <!-- <div class="position-relative form-group">
-                  <label for="exampleadresse">adresse</label>
-                  <input name="adresse" id="exampleadresse" placeholder="Address" type="adresse" class="form-control">
-                </div> -->
-              <button class="mt-1 btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-        </div>
-      </ng-template>
       <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success"
-        (click)="open(content2)">
+      (click)="triggerModal(modalData)">
         <br>
         <div><i class="material-icons">&#xE147;</i>
         </div>
         Ajouter un Nouveau Groupe
       </button>
 
-      <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
     </div>
   </div>
   <div class="table-responsive">
@@ -82,20 +41,19 @@
           <th class="text-center">Ajout</th>
           <th class="text-center">Actions</th>
 
-
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let departements of departements">
           <td class="text-center">
-            Informatique
+            {{departements.nom}}
           </td>
           <td class="text-center">
-            <a>Liste des utilisateurs
+            <a href="#">Consulter liste des utilisateurs
             </a>
           </td>
           <td class="text-center">
-            Plusdedétail
+              <i class="vsm-icon pe-7s-info"></i>
           </td>
           <td class="text-center">
             <div class="avatar-icon-wrapper avatar-icon-sm avatar-icon-add">
@@ -106,21 +64,18 @@
           </td>
           <td class="text-center">
             <div role="group" class="btn-group-sm btn-group">
-
             </div>
             <a (click)="open(content1)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
                 title="Edit">&#xE254;</i></a>
             <ng-template #content1 let-c="close" let-d="dismiss">
               <div class="modal-header">
                 <h4 class="modal-title">Modifier département</h4>
-                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-
                 <div class="card-body">
-
                   <form>
                     <div class="position-relative form-group">
                       <label for="examplegroupe">Nom département</label>
@@ -132,25 +87,18 @@
                       <input name="utilisateur" id="exampleUtilisateur" placeholder="nom utilisateur "
                         type="utilisateur" class="form-control">
                     </div>
-                    <!-- <div class="position-relative form-group">
-                              <label for="exampleadresse">adresse</label>
-                              <input name="adresse" id="exampleadresse" placeholder="Address" type="adresse" class="form-control">
-                            </div> -->
                     <button class="mt-1 btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel" (click)="c('Close click')">Close</button>
+                <button type="button" class="btn btn-outline-dark" >Save</button>
               </div>
             </ng-template>
-            <a class="delete" data-toggle="modal"><i class="material-icons" (click)="supprimeruser()"
-                data-toggle="tooltip" title="Delete">&#xE872;</i>
-            </a>
-
+            <a class="delete" data-toggle="modal"><i class="material-icons" (click)="supprimeruser(departements.id)"
+              data-toggle="tooltip" title="Delete">&#xE872;</i>
+          </a>
           </td>
         </tr>
       </tbody>
@@ -160,3 +108,25 @@
 
   </div>
 </div>
+
+
+<ng-template #modalData let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajout d'un département</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="this.formtest">
+      <div class="position-relative form-group">
+        <label for="examplegroupe">Veuillez saisir le nom de groupe</label>
+        <input formControlName="nom" name="nom" type="text" placeholder="nom groupe..." class="form-control" >
+      </div>     
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    <button type="button" (click)="onSubmit()" (click)="modal.close('Save click')" class="btn btn-success" [disabled]="!formtest.valid">Ajouter</button>
+  </div>
+</form> 
+</div>
+</ng-template>

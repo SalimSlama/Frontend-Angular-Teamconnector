@@ -21,9 +21,7 @@
               activeIds="{{extraParameter}}">
               <ngb-panel id="dashboards">
                 <ng-template ngbPanelHeader>
-                    <i class="vsm-icon pe-7s-phone"></i>
-                    <span class="vsm-title">Home</span>
-                    <i class="vsm-arrow"></i>
+                    <span class="vsm-title">Acceuil</span>
                 </ng-template>
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
@@ -59,6 +57,32 @@
                           <span class="vsm-title">Départements</span>
                         </a>
                       </div>
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/gestion-utilisateurs" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Utilisateurs</span>
+                        </a>
+                      </div>
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/historique" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Historiques</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel id="dashboards">
+                <ng-template ngbPanelHeader>
+                    <span class="vsm-title">Admin</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                  <div class="vsm-dropdown">
+                    <div class="vsm-list">
+                      <div class="vsm-item">
+                        <a routerLink="/dashboards/admin" routerLinkActive="active-item" class="vsm-link">
+                          <span class="vsm-title">Administrateurs</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </ng-template>
@@ -68,5 +92,6 @@
         </div>
       </perfect-scrollbar>
     </div>
+
   </div>
 </div>
