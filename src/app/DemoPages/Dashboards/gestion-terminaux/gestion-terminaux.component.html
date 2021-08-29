@@ -98,11 +98,12 @@
           <div class="widget-numbers">
             <span>{{allterminaux.nom ? allterminaux.nom : "terminal"}}</span>
           </div>
-          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">{{allterminaux.Android_id}}</div>
-          <div class="widget-description opacity-8">Niveau Batterie:
-
-            <span class="text-success pr-1">
-              <span class="pl-1">86%</span>
+          <div class="widget-subheading fsize-1 pt-2 font-weight-bold opacity-10">Android Id:
+            <span class="font-weight-bold text-warning"> {{allterminaux.Android_id}} </span>
+          </div>
+          <div class="widget-description opacity-8">Niveau de Batterie:
+            <span class="pr-1">
+              <span class="text-success pl-1">{{allterminaux.etats.NiveauDeBatterie}}</span>
             </span>
           </div>
           <br>

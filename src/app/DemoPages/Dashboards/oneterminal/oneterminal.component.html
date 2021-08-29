@@ -5,14 +5,19 @@
           <li ngbNavItem>
             <a ngbNavLink><span>Informations</span></a>
             <ng-template ngbNavContent>
-                <div>
-                <label>Nom appareil: </label>
-                <div class="col-md-6"> <input name="nomappareil" type="text" placeholder="Nom appareil..." class="form-control" ></div>
-                <div class="col-md-4"><button type="button" class="btn-shadow btn btn-success">
-                  Sauvegarder
-              </button></div>
-              </div>
-                <div>
+                <div style="width: 100%;">
+                  <form [formGroup]="updateForm">
+                  <label>Nom appareil: </label>
+                    <div class="d-flex">
+                      <input  placeholder="Nom appareil..." formControlName="nom" type="text"  class="form-control" id="nom" >
+                      <button  type="button" (click)="updateterminal()" class="btn-shadow btn btn-success">
+                        Sauvegarder
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <div style="width: 100%;">
                   <label>Modéle: </label>
                   <input name="modele" type="text" placeholder="Modéle..." class="form-control" value="{{terminal.Modele}}" disabled>
                 </div>

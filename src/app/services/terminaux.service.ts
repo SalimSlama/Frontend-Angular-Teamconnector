@@ -26,4 +26,7 @@ export class TerminauxService {
   getnameTerminal(id) {
     return this.http.get(this.config.baseUrl + "/getnameTerminal/" + id);
   }
+  updatenameTerminal(id, data) {
+    return this.http.put(this.config.baseUrl + "/editTerminal/" + id, data);
+  }
 }

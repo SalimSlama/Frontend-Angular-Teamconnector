@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { cloneDeep, random } from 'lodash-es';
+
 import { ActivatedRoute } from '@angular/router';
 import { faAngleDown, faAngleUp, faDotCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Color } from 'ng2-charts';
 import { TerminauxService } from 'src/app/services/terminaux.service';
+import {
+  GlobalConfig, ToastrService
+} from 'ngx-toastr';
 
+const types = ['success', 'error', 'info', 'warning'];
 @Component({
   selector: 'app-oneterminal',
   templateUrl: './oneterminal.component.html',
@@ -19,6 +26,14 @@ export class OneterminalComponent implements OnInit {
   heading = 'Management';
   subheading = 'This is an example dashboard created using build-in elements and components.';
   icon = 'pe-7s-car icon-gradient bg-mean-fruit';
+  nom: any;
+  updateForm: FormGroup;
+
+  optionss: GlobalConfig;
+  title: any
+  message: any
+  private lastInserted: number[] = [];
+  type = types[0];
 
   public datasets = [
     {
@@ -93,7 +108,10 @@ export class OneterminalComponent implements OnInit {
   longitude
   terminalname = []
   constructor(private route: ActivatedRoute,
-    private terminalSRV: TerminauxService) {
+    private terminalSRV: TerminauxService,
+    private formb: FormBuilder,
+    public toastr: ToastrService) {
+    this.optionss = this.toastr.toastrConfig;
   }
 
   ngOnInit() {
@@ -102,6 +120,9 @@ export class OneterminalComponent implements OnInit {
     this.id = myid
     this.getOneTerminal()
     this.getnameTerminal()
+    this.updateForm = this.formb.group({
+      nom: ['']
+    });
 
   }
   getOneTerminal() {
@@ -119,6 +140,33 @@ export class OneterminalComponent implements OnInit {
       console.log(this.terminalname);
 
     })
+  }
+  updateterminal() {
+    this.terminalSRV.updatenameTerminal(this.id, this.updateForm.value).subscribe((data: any) => {
+      this.message = "Modification avec succés"
+      this.openToast();
+    });
+  }
+  openToast() {
+    const { message, title } = this.getMessage();
+    // Clone current config so it doesn't change when ngModel updates
+    const opt = cloneDeep(this.options);
+    const inserted = this.toastr.show(
+      message,
+      title,
+      opt,
+      this.optionss.iconClasses[this.type],
+    );
+    if (inserted) {
+      this.lastInserted.push(inserted.toastId);
+    }
+    return inserted;
+  }
+  getMessage() {
+    return {
+      message: this.message,
+      title: 'Succes',
+    };
   }
 
 

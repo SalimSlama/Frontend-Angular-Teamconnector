@@ -15,9 +15,12 @@
 <div>
     <agm-map [latitude]="lat" [longitude]="lng">
         <div *ngFor="let lastTerminau of lastTerminaux">
-        <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
-        <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude"></agm-marker>
-        </div> 
+        <agm-marker [latitude]="lastTerminau.Lattitude" [longitude]="lastTerminau.Longitude">
+          <agm-info-window>
+            <strong>{{lastTerminau.appareil.nom}}</strong>
+          </agm-info-window>
+        </agm-marker>
+        </div>
     </agm-map>
 </div>
 

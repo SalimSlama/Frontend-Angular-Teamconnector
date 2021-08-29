@@ -20,6 +20,7 @@ export class GestionTerminauxComponent implements OnInit {
   public value = 'https://www.google.com';
   allterminaux = [];
   terminalname = 'terminal'
+  terminalBattery = [];
   constructor(private modalService: NgbModal,
     private terminauxSRV: TerminauxService) { }
   ngOnInit(): void {
@@ -45,7 +46,7 @@ export class GestionTerminauxComponent implements OnInit {
     this.terminauxSRV.getAllTerminaux().subscribe((data: any) => {
       this.allterminaux = data
       this.terminalname = data.nom
-      console.log("aaa", this.allterminaux);
+      console.log("les terminaux", this.allterminaux)
 
     })
   }
