@@ -15,42 +15,31 @@ export class HistoriqueComponent implements OnInit {
   terminals = [
     { id: 1, name: 'SM-A307FN' },
     { id: 2, name: 'LDN-L21' },
-    { id: 3, name: 'DRA-LX2'},
+    { id: 3, name: 'DRA-LX2' },
     { id: 4, name: 'A20' }
   ];
-  terminaux=[];
+  terminaux = [];
   FiltredTerminaux = [];
-  model3: NgbDateStruct;
-  today = this.calendar2.getToday();
-  model: NgbDateStruct;
-  fromDate: NgbDate;
-  toDate: NgbDate;
+  modelfin
+  modeldebut
+
   constructor(private modalService: NgbModal,
-              private terminauxSRV:TerminauxService,
-              private calendar: NgbCalendar,
-               private calendar2: NgbCalendar){
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
-      }
-
-  model2: NgbDateStruct = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
-  disabled = true;
-
-  selectToday() {
-    this.model = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+    private terminauxSRV: TerminauxService) {
   }
   ngOnInit(): void {
-  this.terminauxSRV.getTerminaux().subscribe((data:any)=>{
-    this.terminaux=data
-    this.FiltredTerminaux=data
-  })
+    this.terminauxSRV.getTerminaux().subscribe((data: any) => {
+      this.terminaux = data
+      console.log(this.terminaux);
+
+      this.FiltredTerminaux = data
+    })
   }
-  onSelectChange (e) {
+  onSelectChange(e) {
     this.FiltredTerminaux = this.terminaux;
     this.FiltredTerminaux = this.terminaux.filter(t => t.terminal_id == e.id)
   }
   triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
@@ -62,7 +51,7 @@ export class HistoriqueComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 }

@@ -55,51 +55,43 @@
 </div>
 <div class="row" > 
     <div class="col-md-6 col-lg-4">Début:
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model3" ngbDatepicker
-            [footerTemplate]="footerTemplate" #d3="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button">
-              <i class="fa fa-calendar"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
-    <ng-template #footerTemplate>
-      <hr class="my-0">
-      <button class="btn btn-primary btn-sm m-2 float-left" (click)="model3 = today; d3.close()">Today</button>
-      <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d3.close()">Close</button>
-    </ng-template>
-    </div>
-    <div class="col-md-6 col-lg-4"> Fin:
-        <form class="form-inline">
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="model3" ngbDatepicker
-                [footerTemplate]="footerTemplate2" #d3="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button">
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="modelfin" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
                   <i class="fa fa-calendar"></i>
-                </button>
-              </div>
+              </button>
             </div>
           </div>
-        </form>
-        <ng-template #footerTemplate2>
-          <hr class="my-0">
-          <button class="btn btn-primary btn-sm m-2 float-left" (click)="model3 = today; d3.close()">Today</button>
-          <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d3.close()">Close</button>
-        </ng-template>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 col-lg-4"> Fin:
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="oooo-mm-dd"
+                   name="dp1" [(ngModel)]="modeldebut" ngbDatepicker #d1="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                  <i class="fa fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
     <div class="col-md-2 col-lg-4">
         <button type="button" class="btn-shadow btn btn-success">
             Valider 
         </button>
     </div>
+    
 </div>
+<hr/>
 <div class="main-card mb-3 card">
     <div class="card-header">
         Consulter tous les états

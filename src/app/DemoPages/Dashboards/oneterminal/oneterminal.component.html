@@ -7,20 +7,29 @@
             <ng-template ngbNavContent>
                 <div>
                 <label>Nom appareil: </label>
-                  <input name="nomappareil" type="text" placeholder="Nom appareil..." class="form-control" disabled>
-                </div>
+                <div class="col-md-6"> <input name="nomappareil" type="text" placeholder="Nom appareil..." class="form-control" ></div>
+                <div class="col-md-4"><button type="button" class="btn-shadow btn btn-success">
+                  Sauvegarder
+              </button></div>
+              </div>
                 <div>
-                  <label>Adresse Mac: </label>
-                  <input name="adressemac" type="text" placeholder="Adresse Mac..." class="form-control" disabled>
+                  <label>Modéle: </label>
+                  <input name="modele" type="text" placeholder="Modéle..." class="form-control" value="{{terminal.Modele}}" disabled>
                 </div>
                 <div class="row mt-1">
-                    <div class="col-md-12"><label class="labels">Etat de mémoire :</label><input type="text" class="form-control" placeholder="Etat de mémoire..." value="" disabled></div>
+                    <div class="col-md-12"><label class="labels">Etat de mémoire :</label><input type="text" class="form-control" placeholder="Etat de mémoire..." value="{{terminal.Memoire}}" disabled></div>
                 </div>
                 <div class="row mt-1">
-                    <div class="col-md-12"><label class="labels">Version Système :</label><input type="text" class="form-control" placeholder="Version Système..." value="" disabled></div>
+                  <div class="col-md-12"><label class="labels">Fabriquant :</label><input type="text" class="form-control" placeholder="Etat de mémoire..." value="{{terminal.Fabriquant}}" disabled></div>
+              </div>
+              <div class="row mt-1">
+                <div class="col-md-12"><label class="labels">Etat de mémoire :</label><input type="text" class="form-control" placeholder="Etat de mémoire..." value="{{terminal.NiveauDeBatterie}}" disabled></div>
+            </div>
+                <div class="row mt-1">
+                    <div class="col-md-12"><label class="labels">Version Système :</label><input type="text" class="form-control" placeholder="Version Système..." value="{{terminal.VersionSE}}" disabled></div>
                 </div>
                 <div class="row mt-1">
-                    <div class="col-md-12"><label class="labels">Android_Id:</label><input type="text" class="form-control" placeholder="Android_Id..." value="" disabled></div>
+                    <div class="col-md-12"><label class="labels">Android_Id:</label><input type="text" class="form-control" placeholder="Android_Id..." value="{{id}}" disabled></div>
                 </div>
             </ng-template>
           </li>
@@ -32,10 +41,10 @@
       <div class="mb-3 card">
         <div class="card-header-tab card-header">
           <div class="card-header-title">
-            <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+            <i class="header-icon lnr-location icon-gradient bg-tempting-azure"> </i>
             Localisation
           </div>
-          
+
 
         </div>
         <div class="widget-chart p-0">
@@ -45,8 +54,12 @@
         <div class="pt-2 card-body">
             <agm-map [latitude]="lat" [longitude]="lng">
                 <div>
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                </div> 
+                <agm-marker [latitude]="lattitude" [longitude]="longitude" >
+                  <agm-info-window>
+                    <strong>{{terminalname}}</strong>
+                  </agm-info-window>
+                </agm-marker>
+                </div>
             </agm-map>
         </div>
       </div>

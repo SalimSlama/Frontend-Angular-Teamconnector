@@ -5,7 +5,7 @@
                 <i class="vsm-icon pe-7s-phone"></i>
             </div>
             <div>
-                <h2>Nom <b>Terminal</b></h2>
+                <h2>Consultation <b>états des terminaux</b></h2>
             <div class="page-title-subheading">
                 </div>
             </div>
@@ -20,11 +20,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
-                        <div class="modal-header">						
+                        <div class="modal-header">
                             <h4 class="modal-title">Delete Employee</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
+                        <div class="modal-body">
                             <p>Are you sure you want to delete these Records?</p>
                             <p class="text-warning"><small>This action cannot be undone.</small></p>
                         </div>
@@ -56,7 +56,7 @@
 </ng-template>
 <div>
     <label> Choisir un terminal:  </label>
-    <ng-select [items]="terminals" (change) = "onSelectChange($event)" change bindLabel="name" placeholder="Select city" >
+    <ng-select [items]="terminals" (change) = "onSelectChange($event)" change bindLabel="nom" placeholder="Select city" >
     </ng-select>
 </div>
 <div class="main-card mb-3 card">
@@ -68,7 +68,7 @@
             <thead>
                 <tr>
                     <th>
-                        
+
                     </th>
                     <th class="text-center">Nom de l'Appareil</th>
                     <th class="text-center">Version Système</th>
@@ -78,12 +78,12 @@
                     <th class="text-center">Android_Id</th>
                     <th class="text-center">Date et Heure</th>
                 </tr>
-                
+
             </thead>
             <tbody>
                 <tr *ngFor="let terminaux of FiltredTerminaux">
 
-                   
+
                     <td>
                         <span class="custom-checkbox">
                             <input type="checkbox" id="checkbox5" name="options[]" value="1">
@@ -97,7 +97,7 @@
 
                                 </div>
                                 <div class="widget-content-left flex2">
-                                    <div class="widget-heading"> {{terminaux.Modele}}</div>
+                                    <div class="widget-heading"> {{terminaux.appareil ? terminaux.appareil.nom : ""}}</div>
                                 </div>
                             </div>
                         </div>
@@ -124,9 +124,9 @@
                     <td class="text-center">{{terminaux.Fabriquant}}</td>
                     <td class="text-center">{{terminaux.Android_id}}</td>
                     <td class="text-center">
-                        {{terminaux.created_at}}                    
+                        {{terminaux.created_at}}
                     </td>
-                </tr> 
+                </tr>
             </tbody>
         </table>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { TerminauxService } from 'src/app/services/terminaux.service';
 
 @Component({
   selector: 'app-gestion-terminaux',
@@ -13,14 +14,19 @@ export class GestionTerminauxComponent implements OnInit {
   faPlus = faPlus;
   icon = 'pe-7s-phone icon-gradient bg-tempting-azure';
   closeModal: string
-public elementType = NgxQrcodeElementTypes.URL;
-public correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-public value = 'https://medium.com/@vaiz10';
-  constructor(private modalService: NgbModal) { }
+  public elementType = NgxQrcodeElementTypes.URL;
+  public correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  public url = 'https://www.google.com';
+  public value = 'https://www.google.com';
+  allterminaux = [];
+  terminalname = 'terminal'
+  constructor(private modalService: NgbModal,
+    private terminauxSRV: TerminauxService) { }
   ngOnInit(): void {
+    this.getallterminaux()
   }
   triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
@@ -32,7 +38,15 @@ public value = 'https://medium.com/@vaiz10';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
+  }
+  getallterminaux() {
+    this.terminauxSRV.getAllTerminaux().subscribe((data: any) => {
+      this.allterminaux = data
+      this.terminalname = data.nom
+      console.log("aaa", this.allterminaux);
+
+    })
   }
 }

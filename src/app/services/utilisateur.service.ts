@@ -7,20 +7,29 @@ import { ConfigurationService } from './configuration.service';
 })
 export class UtilisateurService {
 
-  constructor(private http: HttpClient, private config: ConfigurationService) { }
+  constructor(private http: HttpClient,
+    private config: ConfigurationService) { }
+
   addutilisateurs(data) {
-    return this.http.post(this.config.baseUrl+"/addUtilisateur",data);
+    return this.http.post(this.config.baseUrl + "/addUtilisateur", data);
   }
   getallutilisateurs() {
-    return this.http.get(this.config.baseUrl+"/getallUtilisateur");
+    return this.http.get(this.config.baseUrl + "/getallUtilisateur");
   }
   deleteutilisateur(id) {
-    return this.http.delete(this.config.baseUrl+"/deleteutilisateur/" + id);
+    return this.http.delete(this.config.baseUrl + "/deleteutilisateur/" + id);
   }
-  getoneutilisateur(id){
-    return this.http.get(this.config.baseUrl+"/getoneutilisateur/" + id);
+  getoneutilisateur(id) {
+    return this.http.get(this.config.baseUrl + "/getoneutilisateur/" + id);
   }
-  updateutilisateur(id, data){
-    return this.http.put(this.config.baseUrl+"/updateutilisateur/" + id, data);
+  updateutilisateur(id, data) {
+    return this.http.put(this.config.baseUrl + "/updateutilisateur/" + id, data);
   }
+  gettrashedutilisateurs() {
+    return this.http.get(this.config.baseUrl + "/getonlytrashedutilisateur");
+  }
+  restoreutilisateur(id, data) {
+    return this.http.post(this.config.baseUrl + "/restoreutilisateur/" + id, data);
+  }
+
 }

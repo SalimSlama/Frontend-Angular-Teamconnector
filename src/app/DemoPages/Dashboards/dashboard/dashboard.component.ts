@@ -11,12 +11,14 @@ export class DashboardComponent implements OnInit {
   faStar = faStar;
   faPlus = faPlus;
   icon = 'pe-7s-rocket icon-gradient bg-tempting-azure';
+  modeldebut
+  modelfin
   constructor() { }
 
   ngOnInit(): void {
   }
-  supprimerappareil(){
-     
+  supprimerappareil() {
+
     Swal.fire({
       title: 'vous êtes sûr?',
       text: 'You wont be able to revert this!',

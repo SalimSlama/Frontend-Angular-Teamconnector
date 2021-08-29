@@ -16,26 +16,38 @@ export class GererTerminalComponent implements OnInit {
   terminals = [
     { id: 1, name: 'SM-A307FN' },
     { id: 2, name: 'LDN-L21' },
-    { id: 3, name: 'DRA-LX2'},
+    { id: 3, name: 'DRA-LX2' },
     { id: 4, name: 'A20' }
   ];
-  terminaux=[];
+  terminaux = [];
   FiltredTerminaux = [];
   constructor(private modalService: NgbModal,
-              private terminauxSRV:TerminauxService,
-              ) { }
+    private terminauxSRV: TerminauxService,
+  ) { }
   ngOnInit(): void {
-  this.terminauxSRV.getlast().subscribe((data:any)=>{
-    
-    this.FiltredTerminaux=this.terminaux=data
-  })
+    this.terminauxSRV.getlast().subscribe((data: any) => {
+      this.FiltredTerminaux = this.terminaux = data
+    })
+    this.terminauxSRV.getAllTerminaux().subscribe((data: any) => {
+      this.terminals = data
+      console.log(data);
+    })
   }
-  onSelectChange (e) {
+  onSelectChange(e) {
     this.FiltredTerminaux = this.terminaux;
-    this.FiltredTerminaux = this.terminaux.filter(t => t.terminal_id == e.id)
+    // this.FiltredTerminaux = this.terminaux.filter(t => t.appareil.id == e.id)
+    var data = []
+    this.terminaux.forEach(element => {
+      if (element.appareil && element.appareil.id == e.id) {
+        data.push(element)
+      }
+    });
+    this.FiltredTerminaux = data
+    console.log("aa", this.FiltredTerminaux);
+
   }
   triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
@@ -47,9 +59,9 @@ export class GererTerminalComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
- 
+
 }

@@ -6,14 +6,24 @@ import { ConfigurationService } from "./configuration.service";
   providedIn: "root",
 })
 export class TerminauxService {
-  constructor(private http: HttpClient, private config: ConfigurationService) {}
+  constructor(private http: HttpClient, private config: ConfigurationService) { }
 
   getTerminaux() {
     return this.http.get(this.config.baseUrl + "/getallEtatTerminal");
   }
-  
-  getlast(){
+
+  getlast() {
     return this.http.get(this.config.baseUrl + "/getlast");
 
+  }
+  getAllTerminaux() {
+    return this.http.get(this.config.baseUrl + "/getallTerminaux");
+  }
+  getOneTerminal(id) {
+    return this.http.get(this.config.baseUrl + "/getOneTerminal/" + id);
+  }
+
+  getnameTerminal(id) {
+    return this.http.get(this.config.baseUrl + "/getnameTerminal/" + id);
   }
 }

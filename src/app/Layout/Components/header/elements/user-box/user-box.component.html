@@ -22,8 +22,7 @@
                           <img width="42" src="./assets/images/avatars/111.jpg" alt="" class="rounded-circle">
                         </div>
                         <div class="widget-content-left">
-                          <div class="widget-heading">{{user?.nom}}</div>
-                          <div class="widget-subheading opacity-8">A short profile description</div>
+                          <div class="widget-heading">{{user?.nom}} {{user?.prenom}}</div>
                         </div>
                         <div class="widget-content-right mr-2">
                           <button class="btn-pill btn-shadow btn-shine btn btn-focus" routerlink="/userpages/login"
@@ -39,7 +38,7 @@
                 <perfect-scrollbar [autoPropagation]="true">
                   <ul class="nav flex-column">
                     <li class="nav-item-header nav-item">Activity</li>
-                    <li class="nav-item"><a [routerLink]="" class="nav-link">Chat
+                    <li class="nav-item"><a routerLink="/dashboards/profil" class="nav-link">Mon profil
                         <div class="ml-auto badge badge-pill badge-info">8</div>
                       </a></li>
                     <li class="nav-item"><a [routerLink]="" class="nav-link">Recover Password</a></li>
@@ -85,15 +84,9 @@
           </div>
         </div>
         <div class="widget-content-left ml-3 header-user-info">
-          <div class="widget-heading">{{user?.nom}}</div>
+          <div class="widget-heading">{{user?.nom}} {{user?.prenom}}</div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="header-btn-lg">
-    <button type="button" class="hamburger hamburger--elastic" [ngClass]="{'is-active' : globals.toggleDrawer}"
-      (click)="toggleDrawer()">
-      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
-    </button>
   </div>
 </div>

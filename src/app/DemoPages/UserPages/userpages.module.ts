@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 
 
@@ -16,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     SlickCarouselModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SnotifyModule
+  ],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService
   ]
 })
 export class UserpagesModule { }

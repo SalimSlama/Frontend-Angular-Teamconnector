@@ -26,6 +26,7 @@ import { HistoriqueComponent } from './historique/historique.component'
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { OneterminalComponent } from './oneterminal/oneterminal.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { AdministrateurComponent } from './administrateur/administrateur.compone
        HistoriqueComponent,
        OneterminalComponent,
        AdministrateurComponent,
+       ProfilComponent,
   ]
 })
 export class DashboardsModule { }

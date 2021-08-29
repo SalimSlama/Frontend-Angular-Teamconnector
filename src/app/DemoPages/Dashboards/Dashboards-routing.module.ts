@@ -13,6 +13,7 @@ import { GestionUtilisateursComponent } from './gestion-utilisateurs/gestion-uti
 import { GroupesComponent } from './groupes/groupes.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { OneterminalComponent } from './oneterminal/oneterminal.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   {
@@ -22,8 +23,8 @@ const routes: Routes = [
       status: false
     },
     children: [
- 
-       {
+
+      {
         path: 'dashboard', component: DashboardComponent, data: { extraParameter: '' }
       },
       {
@@ -48,10 +49,13 @@ const routes: Routes = [
         path: 'historique', component: HistoriqueComponent, data: { extraParameter: '' }
       },
       {
-        path: 'oneterminal', component: OneterminalComponent, data: { extraParameter: '' }
+        path: 'oneterminal/:id', component: OneterminalComponent, data: { extraParameter: '' }
       },
       {
         path: 'admin', component: AdministrateurComponent, data: { extraParameter: '' }
+      },
+      {
+        path: 'profil', component: ProfilComponent, data: { extraParameter: '' }
       }
     ]
   }

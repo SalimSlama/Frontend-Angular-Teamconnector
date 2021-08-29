@@ -24,14 +24,12 @@ export class UserBoxComponent implements OnInit {
 
   ngOnInit() {
     this.userid = this.adminSRV.CurrentUser.sub
-    console.log(this.userid);
+    ////console.log(this.userid);
 
     this.adminSRV.getoneadmin(this.userid).subscribe((d) => {
       this.user = d
-      console.log(d);
-    }
-
-    )
+      //console.log(d);
+    });
 
 
   }

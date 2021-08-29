@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faAngleDown, faAngleUp, faDotCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Color } from 'ng2-charts';
+import { TerminauxService } from 'src/app/services/terminaux.service';
 
 @Component({
   selector: 'app-oneterminal',
@@ -85,11 +87,38 @@ export class OneterminalComponent implements OnInit {
     responsive: true,
     maintainAspectRatio: false
   };
-
-  constructor() {
+  id: any
+  terminal = []
+  lattitude
+  longitude
+  terminalname = []
+  constructor(private route: ActivatedRoute,
+    private terminalSRV: TerminauxService) {
   }
 
   ngOnInit() {
+    let myid = this.route.snapshot.params.id
+    console.log("mon identifiant est :", myid);
+    this.id = myid
+    this.getOneTerminal()
+    this.getnameTerminal()
+
+  }
+  getOneTerminal() {
+    this.terminalSRV.getOneTerminal(this.id).subscribe((data: any) => {
+      this.terminal = data
+      this.lattitude = data.Lattitude
+      this.longitude = data.Longitude
+      console.log(this.terminal)
+
+    })
+  }
+  getnameTerminal() {
+    this.terminalSRV.getnameTerminal(this.id).subscribe((data: any) => {
+      this.terminalname = data.nom
+      console.log(this.terminalname);
+
+    })
   }
 
 

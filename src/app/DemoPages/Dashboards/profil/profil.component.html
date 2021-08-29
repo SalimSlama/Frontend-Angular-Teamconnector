@@ -1,0 +1,91 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="vsm-icon pe-7s-users"></i>
+            </div>
+            <div>
+                <h2>Mon <b>Profil</b></h2>
+            <div class="page-title-subheading">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div>
+    <form [formGroup]="updateForm">
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset class="form-group" id="__BVID__132">
+              <div tabindex="-1" role="group">
+                <label for="exampleEmail">
+                  <span class="text-danger">*</span>
+                  Email :
+                </label>
+                <input formControlName="email" name="email" type="email"  class="form-control" value="{{user?.email}}"></div>
+            </fieldset>
+          </div>
+          <div class="col-md-3">
+            <fieldset class="form-group" id="__BVID__133">
+              <div tabindex="-1" role="group">
+                <label for="exampleName">Nom :</label>
+                <input formControlName="nom" id="nom" name="nom" type="text" value="{{user?.nom}}" class="form-control">
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-md-3">
+            <fieldset class="form-group" id="__BVID__134">
+              <div tabindex="-1" role="group">
+                <label for="examplePrenom">Prénom :</label>
+                <input  name="prenom" formControlName="prenom" type="text" value="{{user?.prenom}}" class="form-control">
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset class="form-group" id="__BVID__135">
+              <div tabindex="-1" role="group">
+                <label for="exampleAdresse">
+                  <span class="text-danger">*</span>
+                  Adresse :
+                </label>
+                <input name="adresse" formControlName="adresse" type="text" value="{{user?.adresse}}" class="form-control"></div>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+          <div>
+              <h3>Pour modifier votre mot de passe :</h3>
+          </div>
+        </div>
+        <hr/>
+          <div class="col-md-6">
+            <fieldset class="form-group" id="__BVID__136">
+              <div tabindex="-1" role="group">
+                <label for="examplePassword"><span class="text-danger">*</span>
+                  Password :
+                </label>
+                <input name="password"  type="password" placeholder="tapez un nouveau mot de passe..." class="form-control" ></div>
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset class="form-group" id="__BVID__138">
+              <div tabindex="-1" role="group">
+                <label for="examplePasswordRep">
+                  <span class="text-danger">*</span>
+                  Confirmation Password :
+                </label>
+                <input name="passwordrep" formControlName="password_confirmation" type="password" placeholder="Confirmer mot de passe..." class="form-control"></div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex align-items-center">
+
+          <div class="ml-auto">
+            <button type="button" (click)="updateutilisateur()" class="btn btn-wide btn-pill btn-shadow btn-hover-shine btn-success btn-block" [disabled]="!updateForm.valid" >
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </form>
+</div>

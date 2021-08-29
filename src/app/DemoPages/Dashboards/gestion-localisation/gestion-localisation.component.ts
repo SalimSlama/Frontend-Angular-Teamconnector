@@ -110,16 +110,18 @@ export class GestionLocalisationComponent implements OnInit {
     },
   ];
 
-  lastTerminaux:any[]
+  lastTerminaux: any[]
   Lattitude
   Longitude
-  constructor(private terminauxSRV:TerminauxService) {}
+  constructor(private terminauxSRV: TerminauxService) { }
 
   ngOnInit(): void {
 
-    this.terminauxSRV.getlast().subscribe((data:any[])=>{
-      this.lastTerminaux=data
-      
+    this.terminauxSRV.getlast().subscribe((data: any[]) => {
+      this.lastTerminaux = data
+      console.log(this.lastTerminaux);
+
+
     })
   }
 }

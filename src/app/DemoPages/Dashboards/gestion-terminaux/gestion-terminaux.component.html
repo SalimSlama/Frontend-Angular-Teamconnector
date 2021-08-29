@@ -87,8 +87,8 @@
 <div class="form-group">
   </div>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-6 col-xl-4">
+  <div class="row" >
+    <div class="col-sm-12 col-md-6 col-xl-4" *ngFor="let allterminaux of allterminaux">
       <div class="card mb-3 widget-chart">
         <div class="widget-chart-content">
           <div class="icon-wrapper rounded">
@@ -96,9 +96,9 @@
             <i class="lnr-laptop-phone text-warning"></i>
           </div>
           <div class="widget-numbers">
-            <span>Terminal1</span>
+            <span>{{allterminaux.nom ? allterminaux.nom : "terminal"}}</span>
           </div>
-          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Mohamed Salim</div>
+          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">{{allterminaux.Android_id}}</div>
           <div class="widget-description opacity-8">Niveau Batterie:
 
             <span class="text-success pr-1">
@@ -106,66 +106,8 @@
             </span>
           </div>
           <br>
-          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
-            Consulter 
-        </button>
-        </div>
-        <div class="widget-chart-wrapper">
-          <div class="d-block">
-            <canvas baseChart class="chart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-xl-4">
-      <div class="card mb-3 widget-chart">
-        <div class="widget-chart-content">
-          <div class="icon-wrapper rounded">
-            <div class="icon-wrapper-bg bg-warning"></div>
-            <i class="lnr-laptop-phone text-warning"></i>
-          </div>
-          <div class="widget-numbers">
-            <span>Terminal2</span>
-          </div>
-          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Sabri Ghezal</div>
-          <div class="widget-description opacity-8">Niveau Batterie:
-
-            <span class="text-warning pr-1">
-              <span class="pl-1">42%</span>
-            </span>
-          </div>
-          <br>
-          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
-            Consulter 
-        </button>
-        </div>
-        <div class="widget-chart-wrapper">
-          <div class="d-block">
-            <canvas baseChart class="chart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-xl-4">
-      <div class="card mb-3 widget-chart">
-        <div class="widget-chart-content">
-          <div class="icon-wrapper rounded">
-            <div class="icon-wrapper-bg bg-warning"></div>
-            <i class="lnr-laptop-phone text-warning"></i>
-          </div>
-          <div class="widget-numbers">
-            <span>Terminal3</span>
-          </div>
-          <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">Ibrahim Lachaal</div>
-          <div class="widget-description opacity-8">Niveau Batterie:
-
-            <span class="text-danger pr-1">
-              <span class="pl-1">15%</span>
-            </span>
-          </div>
-          <br>
-          <button type="button" routerLink="/dashboards/oneterminal" class="btn-shadow d-inline-flex align-items-center btn btn-success">
-            Consulter 
+          <button type="button" [routerLink]="['/dashboards/oneterminal/',allterminaux.Android_id]" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+            Consulter
         </button>
         </div>
         <div class="widget-chart-wrapper">
@@ -185,14 +127,14 @@
     </div>
     <div class="modal-body">
         <div class="container">
-          <h1>QRCODE GENERATOR</h1>
-          <input [(ngModel)]="value">
+          <h3>Veuillez scanner le QR CODE</h3>
+          <input [(ngModel)]="url">
           <ngx-qrcode
              [elementType]="elementType"
              [errorCorrectionLevel]="correctionLevel"
-             [value]="value"
+             [value]="url"
              cssClass="coolQRCode"></ngx-qrcode>
-       </div>  
+       </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
       <button type="button"  (click)="modal.close('Save click')" class="btn btn-success" >Ajouter</button>

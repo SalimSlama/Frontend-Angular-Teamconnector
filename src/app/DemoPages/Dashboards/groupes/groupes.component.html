@@ -9,7 +9,15 @@
         <h2>Liste <b>Départements</b></h2>
       </div>
     </div>
-
+    <div class="page-title-actions">
+      <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-warning"
+      (click)="triggerModal(modaltrashed)">
+        <br>
+        <div><i class="material-icons">&#xe938;</i>
+        </div>
+        Restaurer Départements
+      </button>
+    </div>
   </div>
 </div>
 
@@ -65,9 +73,9 @@
           <td class="text-center">
             <div role="group" class="btn-group-sm btn-group">
             </div>
-            <a (click)="open(content1)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+            <a (click)="triggerModalupdate(modalupdate,departements.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
                 title="Edit">&#xE254;</i></a>
-            <ng-template #content1 let-c="close" let-d="dismiss">
+            <ng-template #modalupdate let-c="close" let-d="dismiss">
               <div class="modal-header">
                 <h4 class="modal-title">Modifier département</h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" >
@@ -76,24 +84,18 @@
               </div>
               <div class="modal-body">
                 <div class="card-body">
-                  <form>
+                  <form [formGroup]="updateForm">
                     <div class="position-relative form-group">
                       <label for="examplegroupe">Nom département</label>
-                      <input name="groupe" id="exampleGroupe" placeholder="nom groupe" type="groupe"
+                      <input formControlName="nom" name="nom" id="nom"  type="text"
                         class="form-control">
                     </div>
-                    <div class="position-relative form-group">
-                      <label for="examplePassword">Nom Utilisateur</label>
-                      <input name="utilisateur" id="exampleUtilisateur" placeholder="nom utilisateur "
-                        type="utilisateur" class="form-control">
-                    </div>
-                    <button class="mt-1 btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel" (click)="c('Close click')">Close</button>
-                <button type="button" class="btn btn-outline-dark" >Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel" (click)="c('Close click')">Close</button>
+                <button type="button" class="btn btn-success" (click)="updatedepartement()" (click)="c('Close click')">Save</button>
               </div>
             </ng-template>
             <a class="delete" data-toggle="modal"><i class="material-icons" (click)="supprimeruser(departements.id)"
@@ -122,11 +124,55 @@
       <div class="position-relative form-group">
         <label for="examplegroupe">Veuillez saisir le nom de groupe</label>
         <input formControlName="nom" name="nom" type="text" placeholder="nom groupe..." class="form-control" >
-      </div>     
+      </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
     <button type="button" (click)="onSubmit()" (click)="modal.close('Save click')" class="btn btn-success" [disabled]="!formtest.valid">Ajouter</button>
   </div>
-</form> 
+</form>
 </div>
 </ng-template>
+
+<ng-template #modaltrashed let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Restaurer un département</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="container">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+              <thead>
+                  <tr>
+                      <th>
+
+                      </th>
+                      <th class="text-center">ID</th>
+                      <th class="text-center">Nom</th>
+                      <th class="text-center">Restaurer</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let trasheddepartements of trasheddepartements">
+                     <td>
+                      </td>
+                      <td class="text-center">{{trasheddepartements.id}}</td>
+                      <td class="text-center">{{trasheddepartements.nom}}</td>
+                      <td class="text-center">
+                          <button class="btn-icon btn-icon-only btn-shadow btn btn-outline-warning" (click)="modal.close('Save click')" (click)="restore(trasheddepartements.id)">
+                              <i _ngcontent-serverapp-c235="" class="lnr-exit-up btn-icon-wrapper"></i>
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+     </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Quitter</button>
+  </div>
+</div>
+</ng-template>
+

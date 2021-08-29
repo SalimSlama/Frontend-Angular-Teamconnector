@@ -77,12 +77,6 @@ import { FooterComponent } from './Layout/Components/footer/footer.component';
 import { FooterDotsComponent } from './Layout/Components/footer/elements/footer-dots/footer-dots.component';
 import { FooterMenuComponent } from './Layout/Components/footer/elements/footer-menu/footer-menu.component';
 
-// Pages
-
-import { ForgotPasswordBoxedComponent } from './DemoPages/UserPages/forgot-password-boxed/forgot-password-boxed.component';
-import { LoginBoxedComponent } from './DemoPages/UserPages/login-boxed/login-boxed.component';
-import { RegisterBoxedComponent } from './DemoPages/UserPages/register-boxed/register-boxed.component';
-
 // Components
 
 // Apex Charts
@@ -138,13 +132,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FooterDotsComponent,
     FooterMenuComponent,
 
-    // // User Pages
-
-    ForgotPasswordBoxedComponent,
-    LoginBoxedComponent,
- 
-    RegisterBoxedComponent,   
-
     // Tables
 
   ],
@@ -167,7 +154,11 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgBootstrapFormValidationModule.forRoot(),
     NgxLoadingModule.forRoot({}),
     RoundProgressModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: true,
+    }),
     SlickCarouselModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -199,7 +190,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgApexchartsModule,
     GaugeModule.forRoot(),
     TrendModule,
-    
+
 
     // Angular Material Components
 

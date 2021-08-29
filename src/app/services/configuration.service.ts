@@ -6,5 +6,8 @@ import { Injectable } from "@angular/core";
 })
 export class ConfigurationService {
   baseUrl = "http://127.0.0.1:8000/api";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 }
+
